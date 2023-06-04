@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Clickable Clock</title>
+  <style>
+    #clock {
+      font-size: 48px;
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    var minutes = 0;
+
+    function updateTime() {
+      var hours = Math.floor(minutes / 60) % 12;
+      var mins = minutes % 60;
+
+      var clockElement = document.getElementById("clock");
+      clockElement.textContent = hours.toString().padStart(2, "0") + ":" + mins.toString().padStart(2, "0");
+    }
+
+    function incrementTime() {
+      minutes += 30;
+      updateTime();
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      updateTime();
+      document.getElementById("clock").addEventListener("click", incrementTime);
+    });
+  </script>
+</head>
+<body>
+  <h1>Clickable Clock</h1>
+  <div id="clock"></div>
+</body>
+</html>
